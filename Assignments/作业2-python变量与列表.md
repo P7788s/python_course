@@ -21,7 +21,22 @@
 ```python
 # 请在这里填写你的代码
 
-
+import math
+def nearest_sq(n):
+    #计算
+    sqrt_n = math.sqrt(n)
+    
+    floor_sqrt_n = math.floor(sqrt_n)
+    ceil_sqrt_n = math.ceil(sqrt_n)
+    
+    lower_square = floor_sqrt_n ** 2
+    upper_square = ceil_sqrt_n ** 2
+    
+    if n-lower_square < upper_square-n :
+        return lower_square
+    else :
+        return upper_square
+    # pass
 ```
 
 ## 第2题：偶数或者奇数（Even or Odd）
