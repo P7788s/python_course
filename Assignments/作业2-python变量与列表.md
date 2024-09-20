@@ -20,7 +20,21 @@
 
 ```python
 # 请在这里填写你的代码
-
+import math
+def nearest_sq(n):
+    #计算
+    sqrt_n = math.sqrt(n)
+    
+    floor_sqrt_n = math.floor(sqrt_n)
+    ceil_sqrt_n = math.ceil(sqrt_n)
+    
+    lower_square = floor_sqrt_n ** 2
+    upper_square = ceil_sqrt_n ** 2
+    
+    if n-lower_square < upper_square-n :
+        return lower_square
+    else :
+        return upper_square
 
 ```
 
@@ -34,7 +48,12 @@
 
 ```python
 # 请在这里填写你的代码
-
+def even_or_odd(number):
+    if number % 2 == 0 :
+        return "Even"
+    else :
+        return "Odd"
+    pass
 ```
 
 ## 第三题：括号匹配（Valid Braces）
@@ -60,5 +79,34 @@ python中没有内置堆栈数据结构，可以直接使用`list`来作为堆�
 
 ```python
 # 请在这里填写你的代码
-
+def valid_braces(string):
+    stack = []
+    
+    # 检查字符串是否为空
+    if not string:
+        return False
+    
+    # 检查字符串长度是否为奇数
+    if len(string) % 2 != 0:
+        return False
+    
+    for char in string:
+        if char in '([{':
+            # 如果是左括号，压入堆栈
+            stack.append(char)
+        elif char in ')]}':
+            # 如果是右括号
+            if not stack:
+                # 如果堆栈为空，返回 False
+                return False
+            top = stack.pop()
+            
+            # 检查是否匹配
+            if (char == ')' and top != '(') or \
+               (char == ']' and top != '[') or \
+               (char == '}' and top != '{'):
+                return False
+    
+    # 最终检查堆栈是否为空
+    return len(stack) == 0
 ```
